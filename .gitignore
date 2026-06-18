@@ -41,13 +41,13 @@ apps/desktop/.env.local
 
 # Local data, generated indexes, and imported/private knowledge
 data/*.sqlite
+!data/nihaixia.sqlite
 data/*.sqlite-*
 data/*.db
 data/*.db-*
 data/raw/
 data/processed/
 data/ocr/
-knowledge/vault/_imported/
 materials/bilibili-style-sources/raw-videos/
 materials/bilibili-style-sources/private/
 materials/bilibili-style-sources/local-inventory.md

@@ -8,6 +8,7 @@
 
 - 倪师体系问答：按人纪、天纪、地纪、跨域自动分类。
 - 本地知识检索：Markdown/YAML 知识库入库到 SQLite，支持 FTS5/BM25 和中文 n-gram。
+- 内置试用知识库：包含已导入的 Markdown 资料和 `data/nihaixia.sqlite` 索引库，开箱即可检索示例资料。
 - 引用优先回答：返回来源、章节、时间戳、页码、命中片段和回答草稿。
 - 统一聊天入口：`chat_orchestrate` 自动路由检索、历法、八字和提示词组装。
 - 历法与四柱工具：公历转农历、干支四柱、八字基础盘、紫微/风水时间底座。
@@ -42,6 +43,8 @@ python -m pip install -e .
 ```powershell
 nihaixia-build-index --vault knowledge/vault --db data/nihaixia.sqlite
 ```
+
+仓库已包含一份 `data/nihaixia.sqlite` 试用索引。修改或新增 `knowledge/vault/` 内容后，再运行上面的命令重建索引。
 
 搜索资料：
 
@@ -258,6 +261,6 @@ nihaixia-eval --db data/nihaixia.sqlite --eval-dir evals --fail-on-error
 
 ## 合规边界
 
-请只提交可公开、可授权、可复现的内容。不要提交真实 API key、`.env`、本地 SQLite 数据库、未授权课程全文、付费资料、原始视频、私有字幕、OCR 中间产物或渲染文件。
+请只提交可公开、可授权、可复现的内容。不要提交真实 API key、`.env`、未授权原始视频、付费资料、私有字幕、OCR 中间产物或渲染文件。
 
 这个项目的定位是“基于合法资料整理的 AI 学习助手”。它可以学习表达结构和讲解节奏，但不能声称自己是倪海厦本人，不能编造私人经历，也不能替代医生诊断和治疗。
