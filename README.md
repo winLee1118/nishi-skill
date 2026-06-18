@@ -71,13 +71,13 @@ nihaixia-bazi "2024-02-10 08:30" --gender unknown
 当前试用包已发布到 TestPyPI：
 
 ```text
-https://test.pypi.org/project/nihaixia-system/0.1.0/
+https://test.pypi.org/project/nihaixia-system/0.1.1/
 ```
 
 先从 TestPyPI 安装试用版。`--extra-index-url` 用来从正式 PyPI 拉取依赖包：
 
 ```powershell
-python -m pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple/ nihaixia-system==0.1.0
+python -m pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple/ nihaixia-system==0.1.1
 ```
 
 安装后验证命令：
@@ -117,7 +117,7 @@ MCP 客户端可以这样配置：
         "https://test.pypi.org/simple/",
         "--extra-index-url",
         "https://pypi.org/simple/",
-        "nihaixia-system==0.1.0"
+        "nihaixia-system==0.1.1"
       ],
       "env": {
         "NIHAIXIA_DB": "D:/path/to/nihaixia.sqlite",

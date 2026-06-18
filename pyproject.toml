@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "nihaixia-system"
-version = "0.1.0"
+version = "0.1.1"
 description = "Lightweight Ni Haixia system Skill, SQLite RAG core, and MCP server."
 readme = "README.md"
 requires-python = ">=3.11"
