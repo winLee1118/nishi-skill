@@ -611,18 +611,22 @@ def current_datetime_text(timezone: str = "Asia/Shanghai") -> str:
     return datetime.now(ZoneInfo(timezone)).isoformat()
 
 
+def resolve_datetime_text(datetime_text: str | None, timezone: str = "Asia/Shanghai") -> str:
+    if str(datetime_text or "").strip().lower() in CURRENT_DATE_TERMS:
+        return current_datetime_text(timezone)
+    return str(datetime_text)
+
+
 @mcp_tool()
-def convert_calendar(datetime_text: str, timezone: str = "Asia/Shanghai") -> dict:
+def convert_calendar(datetime_text: str = "today", timezone: str = "Asia/Shanghai") -> dict:
     """Convert an explicit Gregorian datetime to lunar and Ganzhi parameters.
 
     For current-date questions such as "today", "now", "今天几号", or
-    "今天干支", pass datetime_text="today" instead of inventing a date from
+    "今天干支", omit datetime_text or pass "today". Do not invent a date from
     model memory.
     """
     try:
-        if str(datetime_text or "").strip().lower() in CURRENT_DATE_TERMS:
-            datetime_text = current_datetime_text(timezone)
-        return calendar_report(datetime_text, timezone=timezone)
+        return calendar_report(resolve_datetime_text(datetime_text, timezone), timezone=timezone)
     except (ValueError, ZoneInfoNotFoundError) as exc:
         return calendar_error(exc)
 
@@ -642,20 +646,37 @@ def get_current_calendar(timezone: str = "Asia/Shanghai") -> dict:
 
 @mcp_tool()
 def get_ganzhi(
-    datetime_text: str,
+    datetime_text: str = "today",
     timezone: str = "Asia/Shanghai",
     day_boundary: str = "23:00",
 ) -> dict:
-    """Return year/month/day/hour Ganzhi pillars for a Gregorian datetime."""
+    """Return year/month/day/hour Ganzhi pillars.
+
+    For current-date questions such as "today", "now", or "今天的天干地支",
+    omit datetime_text or pass "today". Do not invent a date from model memory.
+    """
     try:
-        return four_pillars(datetime_text, timezone=timezone, day_boundary=day_boundary)
+        return four_pillars(resolve_datetime_text(datetime_text, timezone), timezone=timezone, day_boundary=day_boundary)
+    except (ValueError, ZoneInfoNotFoundError) as exc:
+        return calendar_error(exc)
+
+
+@mcp_tool()
+def get_current_ganzhi(timezone: str = "Asia/Shanghai", day_boundary: str = "23:00") -> dict:
+    """Return current year/month/day/hour Ganzhi pillars.
+
+    Use this for "today", "now", "今天的天干地支", or other current-time Ganzhi
+    questions. Do not ask the model to supply today's date.
+    """
+    try:
+        return four_pillars(current_datetime_text(timezone), timezone=timezone, day_boundary=day_boundary)
     except (ValueError, ZoneInfoNotFoundError) as exc:
         return calendar_error(exc)
 
 
 @mcp_tool()
 def get_bazi_chart(
-    datetime_text: str,
+    datetime_text: str = "today",
     timezone: str = "Asia/Shanghai",
     gender: str = "unknown",
     location: str = "",
@@ -668,7 +689,7 @@ def get_bazi_chart(
     """Return a structured Four Pillars/Bazi chart for study-oriented analysis."""
     try:
         return bazi_chart(
-            datetime_text,
+            resolve_datetime_text(datetime_text, timezone),
             timezone=timezone,
             gender=gender,
             location=location,
@@ -684,7 +705,7 @@ def get_bazi_chart(
 
 @mcp_tool()
 def get_ziwei_inputs(
-    datetime_text: str,
+    datetime_text: str = "today",
     timezone: str = "Asia/Shanghai",
     gender: str = "unknown",
     location: str = "",
@@ -693,7 +714,7 @@ def get_ziwei_inputs(
     """Return lunar and Ganzhi inputs needed before Ziwei Doushu charting."""
     try:
         chart = bazi_chart(
-            datetime_text,
+            resolve_datetime_text(datetime_text, timezone),
             timezone=timezone,
             gender=gender,
             location=location,
@@ -718,14 +739,15 @@ def get_ziwei_inputs(
 
 @mcp_tool()
 def get_fengshui_time(
-    datetime_text: str,
+    datetime_text: str = "today",
     timezone: str = "Asia/Shanghai",
     day_boundary: str = "23:00",
 ) -> dict:
     """Return time parameters used by Diji/feng-shui or date-selection study."""
     try:
-        pillars = four_pillars(datetime_text, timezone=timezone, day_boundary=day_boundary)
-        chart = bazi_chart(datetime_text, timezone=timezone, day_boundary=day_boundary, annual_years=0)
+        resolved_datetime = resolve_datetime_text(datetime_text, timezone)
+        pillars = four_pillars(resolved_datetime, timezone=timezone, day_boundary=day_boundary)
+        chart = bazi_chart(resolved_datetime, timezone=timezone, day_boundary=day_boundary, annual_years=0)
     except (ValueError, ZoneInfoNotFoundError) as exc:
         return calendar_error(exc)
     return {

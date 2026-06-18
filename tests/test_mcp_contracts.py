@@ -89,12 +89,18 @@ def test_current_calendar_tools_use_runtime_date() -> None:
     today = datetime.now(ZoneInfo("Asia/Shanghai")).date().isoformat()
 
     current = server.get_current_calendar()
+    current_ganzhi = server.get_current_ganzhi()
     converted = server.convert_calendar("today")
     converted_cn = server.convert_calendar("今天")
+    ganzhi_default = server.get_ganzhi()
+    ganzhi_cn = server.get_ganzhi("今天")
 
     assert current["input"]["datetime"].startswith(today)
+    assert current_ganzhi["datetime"].startswith(today)
     assert converted["input"]["datetime"].startswith(today)
     assert converted_cn["input"]["datetime"].startswith(today)
+    assert ganzhi_default["datetime"].startswith(today)
+    assert ganzhi_cn["datetime"].startswith(today)
 
 
 def test_answer_with_citations_returns_composition_contract(monkeypatch) -> None:
