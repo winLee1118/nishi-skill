@@ -71,13 +71,13 @@ nihaixia-bazi "2024-02-10 08:30" --gender unknown
 当前试用包已发布到 TestPyPI：
 
 ```text
-https://test.pypi.org/project/nihaixia-system/0.1.1/
+https://test.pypi.org/project/nihaixia-system/0.1.2/
 ```
 
 先从 TestPyPI 安装试用版。`--extra-index-url` 用来从正式 PyPI 拉取依赖包：
 
 ```powershell
-python -m pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple/ nihaixia-system==0.1.1
+python -m pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple/ nihaixia-system==0.1.2
 ```
 
 安装后验证命令：
@@ -117,7 +117,7 @@ MCP 客户端可以这样配置：
         "https://test.pypi.org/simple/",
         "--extra-index-url",
         "https://pypi.org/simple/",
-        "nihaixia-system==0.1.1"
+        "nihaixia-system==0.1.2"
       ],
       "env": {
         "NIHAIXIA_DB": "D:/path/to/nihaixia.sqlite",
@@ -162,7 +162,8 @@ answer_with_citations  返回带引用、风格和安全计划的回答草稿
 get_related_concepts   查询轻量知识图谱关系
 get_persona_guidance   获取可控讲解风格
 safety_check           返回医学、命理、风水等问题的边界提示
-convert_calendar       公历转农历和基础干支参数
+get_current_calendar   返回当前公历、农历和干支参数；用于“今天几号/今天干支”
+convert_calendar       公历转农历和基础干支参数；显式日期用它，今天传 today
 get_ganzhi             返回年、月、日、时四柱干支
 get_bazi_chart         返回四柱基础盘
 get_ziwei_inputs       返回紫微斗数起盘前置参数

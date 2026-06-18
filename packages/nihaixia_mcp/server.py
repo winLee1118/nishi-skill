@@ -2,8 +2,9 @@ from __future__ import annotations
 
 import os
 from dataclasses import asdict
+from datetime import datetime
 from typing import Any
-from zoneinfo import ZoneInfoNotFoundError
+from zoneinfo import ZoneInfo, ZoneInfoNotFoundError
 
 from nihaixia_core.calendar import bazi_chart, calendar_report, four_pillars
 from nihaixia_core.graph import related_concepts
@@ -591,11 +592,50 @@ def safety_check(question: str, domain: str = "auto") -> dict:
     return {"domain": selected_domain, "safety_notes": safety_notes(question, selected_domain)}
 
 
+CURRENT_DATE_TERMS = {
+    "",
+    "today",
+    "now",
+    "current",
+    "current_date",
+    "current_datetime",
+    "今天",
+    "今日",
+    "现在",
+    "当前",
+    "此刻",
+}
+
+
+def current_datetime_text(timezone: str = "Asia/Shanghai") -> str:
+    return datetime.now(ZoneInfo(timezone)).isoformat()
+
+
 @mcp_tool()
 def convert_calendar(datetime_text: str, timezone: str = "Asia/Shanghai") -> dict:
-    """Convert a Gregorian datetime to lunar date and Ganzhi time parameters."""
+    """Convert an explicit Gregorian datetime to lunar and Ganzhi parameters.
+
+    For current-date questions such as "today", "now", "今天几号", or
+    "今天干支", pass datetime_text="today" instead of inventing a date from
+    model memory.
+    """
     try:
+        if str(datetime_text or "").strip().lower() in CURRENT_DATE_TERMS:
+            datetime_text = current_datetime_text(timezone)
         return calendar_report(datetime_text, timezone=timezone)
+    except (ValueError, ZoneInfoNotFoundError) as exc:
+        return calendar_error(exc)
+
+
+@mcp_tool()
+def get_current_calendar(timezone: str = "Asia/Shanghai") -> dict:
+    """Return the current Gregorian date, lunar date, and Ganzhi parameters.
+
+    Use this for "today", "now", "今天几号", "今天干支", or other current-date
+    questions. Do not ask the model to supply today's date.
+    """
+    try:
+        return calendar_report(current_datetime_text(timezone), timezone=timezone)
     except (ValueError, ZoneInfoNotFoundError) as exc:
         return calendar_error(exc)
 

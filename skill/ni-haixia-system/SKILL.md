@@ -33,7 +33,8 @@ Read `references/domains.md` for domain maps, `references/persona-style.md` for 
 Use deterministic tools for time conversion:
 
 ```text
-convert_calendar: Gregorian -> lunar date + basic Ganzhi parameters
+get_current_calendar: current Gregorian date, lunar date, and Ganzhi parameters; use for "today", "now", "今天几号", "今天干支"
+convert_calendar: explicit Gregorian -> lunar date + basic Ganzhi parameters; for current-date questions pass datetime_text="today", never invent today's date from model memory
 get_ganzhi: year/month/day/hour pillars
 get_bazi_chart: Four Pillars chart with ten gods, hidden stems, five-element counts, empty branches, Nayin, twelve growth stages, luck cycles, and annual fortunes
 get_ziwei_inputs: Ziwei Doushu setup parameters, not a full star chart

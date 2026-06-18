@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "nihaixia-system"
-version = "0.1.1"
+version = "0.1.2"
 description = "Lightweight Ni Haixia system Skill, SQLite RAG core, and MCP server."
 readme = "README.md"
 requires-python = ">=3.11"
@@ -40,6 +40,7 @@ include = ["nihaixia_*"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+pythonpath = ["packages"]
 addopts = ["-p", "no:cacheprovider"]
 norecursedirs = [
   ".codegraph",

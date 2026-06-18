@@ -1,5 +1,8 @@
 from __future__ import annotations
 
+from datetime import datetime
+from zoneinfo import ZoneInfo
+
 from nihaixia_mcp import server
 from nihaixia_core.schemas import SearchResult
 
@@ -80,6 +83,18 @@ def test_safety_check_contract() -> None:
     assert result["domain"] == "renji"
     assert result["safety_notes"]
     assert "处方" in "\n".join(result["safety_notes"])
+
+
+def test_current_calendar_tools_use_runtime_date() -> None:
+    today = datetime.now(ZoneInfo("Asia/Shanghai")).date().isoformat()
+
+    current = server.get_current_calendar()
+    converted = server.convert_calendar("today")
+    converted_cn = server.convert_calendar("今天")
+
+    assert current["input"]["datetime"].startswith(today)
+    assert converted["input"]["datetime"].startswith(today)
+    assert converted_cn["input"]["datetime"].startswith(today)
 
 
 def test_answer_with_citations_returns_composition_contract(monkeypatch) -> None:
