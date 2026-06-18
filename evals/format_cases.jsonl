@@ -1,0 +1,6 @@
+{"id":"format-medical-001","question":"我失眠多梦怎么办","domain":"renji","must_avoid":["学习用草稿"]}
+{"id":"format-medical-002","question":"我肚子疼，吃什么药好","domain":"renji","must_avoid":["学习用草稿"]}
+{"id":"format-medical-003","question":"口干舌燥还胃胀是怎么回事","domain":"renji","must_avoid":["学习用草稿"]}
+{"id":"format-tianji-001","question":"我抽到兑卦，最近感情怎么样","domain":"tianji","must_avoid":["学习用草稿"]}
+{"id":"format-renji-001","question":"桂枝汤和太阳中风的关系","domain":"renji","must_avoid":["学习用草稿"]}
+{"id":"format-greeting-001","question":"你好","domain":"auto","must_avoid":["学习用草稿","检索"]}

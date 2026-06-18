@@ -1,0 +1,30 @@
+{
+  "name": "nihaixia-digital-human-desktop",
+  "version": "0.1.0",
+  "private": true,
+  "main": "electron/main.cjs",
+  "scripts": {
+    "dev": "concurrently -k \"next dev -p 3000\" \"wait-on http://localhost:3000 && electron .\"",
+    "web": "next dev -p 3000",
+    "build": "next build",
+    "start": "next start -p 3000",
+    "electron": "electron .",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@next/swc-win32-x64-msvc": "14.2.33",
+    "lucide-react": "0.468.0",
+    "next": "14.2.33",
+    "react": "18.3.1",
+    "react-dom": "18.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "20.17.6",
+    "@types/react": "18.3.12",
+    "@types/react-dom": "18.3.1",
+    "concurrently": "9.1.0",
+    "electron": "33.2.1",
+    "typescript": "5.6.3",
+    "wait-on": "8.0.1"
+  }
+}

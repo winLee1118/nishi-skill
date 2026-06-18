@@ -1,0 +1,54 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "nihaixia-system"
+version = "0.1.0"
+description = "Lightweight Ni Haixia system Skill, SQLite RAG core, and MCP server."
+readme = "README.md"
+requires-python = ">=3.11"
+license = "MIT"
+authors = [{ name = "Ni Haixia System Contributors" }]
+dependencies = [
+  "mcp>=1.9.0"
+]
+
+[project.optional-dependencies]
+api = ["fastapi>=0.115.0", "uvicorn>=0.30.0"]
+dev = ["pytest>=8.0.0"]
+
+[project.scripts]
+nihaixia-build-index = "nihaixia_core.cli:build_index_main"
+nihaixia-import-subtitles = "nihaixia_core.cli:import_subtitles_main"
+nihaixia-search = "nihaixia_core.cli:search_main"
+nihaixia-build-embeddings = "nihaixia_core.cli:build_embeddings_main"
+nihaixia-embedding-status = "nihaixia_core.cli:embedding_status_main"
+nihaixia-calendar = "nihaixia_core.cli:calendar_main"
+nihaixia-ganzhi = "nihaixia_core.cli:ganzhi_main"
+nihaixia-bazi = "nihaixia_core.cli:bazi_main"
+nihaixia-eval = "nihaixia_core.eval_runner:main"
+nihaixia-hybrid-eval = "nihaixia_core.hybrid_eval:main"
+nihaixia-import-finalhopes = "nihaixia_core.finalhopes_import:main"
+nihaixia-chat = "nihaixia_mcp.orchestrator:main"
+nihaixia-system = "nihaixia_mcp.server:main"
+nihaixia-mcp = "nihaixia_mcp.server:main"
+
+[tool.setuptools.packages.find]
+where = ["packages"]
+include = ["nihaixia_*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = ["-p", "no:cacheprovider"]
+norecursedirs = [
+  ".codegraph",
+  ".codegraph.bak-*",
+  ".pytest_cache",
+  ".reasonix",
+  ".tmp",
+  "backup",
+  "node_modules",
+  "test_artifacts",
+  "tmp_pytest",
+]

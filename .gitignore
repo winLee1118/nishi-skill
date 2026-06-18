@@ -1,0 +1,80 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+tests/*.sqlite
+tests/*.sqlite-*
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+dist/
+build/
+.venv/
+venv/
+
+# Node / desktop app
+node_modules/
+apps/desktop/node_modules/
+apps/desktop/.next/
+apps/desktop/out/
+apps/desktop/dist/
+apps/desktop/*.log
+apps/desktop/*.err.log
+apps/desktop/*.tsbuildinfo
+apps/desktop/design-comparison.png
+apps/desktop/prototype-*.png
+apps/desktop/particle-test.png
+videos/**/node_modules/
+videos/**/dist/
+videos/
+
+# Local env and secrets
+.env
+.env.*
+!.env.example
+apps/desktop/.env.local
+.pypi-token*
+.testpypi-token*
+.github-token*
+
+# Local data, generated indexes, and imported/private knowledge
+data/*.sqlite
+data/*.sqlite-*
+data/*.db
+data/*.db-*
+data/raw/
+data/processed/
+data/ocr/
+knowledge/vault/_imported/
+materials/bilibili-style-sources/raw-videos/
+materials/bilibili-style-sources/private/
+materials/bilibili-style-sources/local-inventory.md
+materials/bilibili-style-sources/samples/*.jsonl
+
+# Video/audio renders and temporary media
+videos/**/renders/
+videos/**/.mimo-tmp/
+videos/**/assets/voice/
+videos/**/*.mp4
+videos/**/*.mov
+videos/**/*.wav
+videos/**/*.aac
+
+# Local tooling caches and backups
+.codegraph/
+.codegraph.bak-*/
+.reasonix/
+.tmp/
+.tools/
+tmp_pytest/
+test_artifacts/
+backup/
+
+# OS / editor noise
+.DS_Store
+Thumbs.db
+desktop.ini
+*.swp
+*.swo

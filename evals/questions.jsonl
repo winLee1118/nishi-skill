@@ -1,0 +1,4 @@
+{"id":"demo-renji-001","question":"桂枝汤和太阳中风是什么关系？","domain":"renji","must_find":["桂枝汤","太阳中风"]}
+{"id":"demo-tianji-001","question":"天干地支和五行怎么关联？","domain":"tianji","must_find":["天干","五行"]}
+{"id":"demo-diji-001","question":"阳宅方位分析要注意什么？","domain":"diji","must_find":["阳宅","方位"]}
+

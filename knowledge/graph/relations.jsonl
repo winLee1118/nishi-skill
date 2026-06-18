@@ -1,0 +1,7 @@
+{"from":"桂枝汤","relation":"related_to","to":"太阳中风","evidence":"demo"}
+{"from":"太阳中风","relation":"belongs_to","to":"太阳病","evidence":"demo"}
+{"from":"五行","relation":"connects","to":"天纪","evidence":"demo"}
+{"from":"五行","relation":"connects","to":"地纪","evidence":"demo"}
+{"from":"五行","relation":"connects","to":"人纪","evidence":"demo"}
+{"from":"阳宅","relation":"uses_concept","to":"方位","evidence":"demo"}
+

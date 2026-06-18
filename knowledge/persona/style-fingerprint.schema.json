@@ -1,0 +1,88 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.nihaixia-system/persona/style-fingerprint.schema.json",
+  "title": "Ni Haixia Persona Style Fingerprint",
+  "type": "object",
+  "required": [
+    "version",
+    "source",
+    "teaching_moves",
+    "sentence_rhythm",
+    "phrase_patterns",
+    "personality_marks",
+    "intensity_weights",
+    "usage_rules"
+  ],
+  "properties": {
+    "version": {
+      "type": "string"
+    },
+    "source": {
+      "type": "object",
+      "required": ["kind", "label", "url", "sample_scope"],
+      "properties": {
+        "kind": { "type": "string" },
+        "label": { "type": "string" },
+        "url": { "type": "string" },
+        "sample_scope": { "type": "string" },
+        "rights_note": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "teaching_moves": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "label", "description", "weight"],
+        "properties": {
+          "id": { "type": "string" },
+          "label": { "type": "string" },
+          "description": { "type": "string" },
+          "weight": { "type": "number", "minimum": 0, "maximum": 1 }
+        },
+        "additionalProperties": false
+      }
+    },
+    "sentence_rhythm": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "phrase_patterns": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "personality_marks": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "intensity_weights": {
+      "type": "object",
+      "required": ["none", "low", "medium", "high"],
+      "additionalProperties": false,
+      "properties": {
+        "none": { "$ref": "#/$defs/intensityWeight" },
+        "low": { "$ref": "#/$defs/intensityWeight" },
+        "medium": { "$ref": "#/$defs/intensityWeight" },
+        "high": { "$ref": "#/$defs/intensityWeight" }
+      }
+    },
+    "usage_rules": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  },
+  "$defs": {
+    "intensityWeight": {
+      "type": "object",
+      "required": ["questioning", "example_density", "humor", "boundary_visibility"],
+      "properties": {
+        "questioning": { "type": "number", "minimum": 0, "maximum": 1 },
+        "example_density": { "type": "number", "minimum": 0, "maximum": 1 },
+        "humor": { "type": "number", "minimum": 0, "maximum": 1 },
+        "boundary_visibility": { "type": "number", "minimum": 0, "maximum": 1 }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

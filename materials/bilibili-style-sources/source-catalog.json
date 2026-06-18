@@ -1,0 +1,254 @@
+{
+  "schema_version": "0.1",
+  "created_at": "2026-06-11",
+  "source_platform": "bilibili",
+  "collection_method": "Chrome search result review",
+  "download_policy": {
+    "status": "page_links_only",
+    "note": "未保存未授权完整视频。后续如需本地化，只处理授权素材、公开字幕、短截图 OCR 或极短人工摘录样本。"
+  },
+  "search_queries": [
+    "倪海厦 人纪 针灸大成 完整版",
+    "倪海厦 黄帝内经 人纪",
+    "倪海厦 伤寒论 经方",
+    "倪海厦 金匮要略",
+    "倪海厦 临床问答 中医",
+    "倪海厦 天纪 易经",
+    "倪海厦 紫微斗数 天纪",
+    "倪海厦 八字 天纪",
+    "倪海厦 地纪 阳宅 风水",
+    "倪海厦 对话梁冬 访谈"
+  ],
+  "sources": [
+    {
+      "id": "renji-complete-001",
+      "category": "人纪",
+      "topic": "人纪合集",
+      "title": "倪海厦【人纪】视频讲座完整版（针灸、黄帝内经、神农本草经、伤寒杂病论、金匮要略）",
+      "bvid": "BV1DW421R7py",
+      "url": "https://www.bilibili.com/video/BV1DW421R7py/",
+      "observed_context": "65.3万播放 / 171:51:29 / UP：天乾地坤中土 / 2024-07-28",
+      "style_value": ["总体系讲课", "跨主题衔接", "长期课堂节奏"],
+      "sampling_priority": 1,
+      "local_status": "not_downloaded"
+    },
+    {
+      "id": "renji-acupuncture-001",
+      "category": "人纪",
+      "topic": "针灸大成",
+      "title": "倪海厦《针灸》全 字幕版",
+      "bvid": "BV1bd4y1F7Zo",
+      "url": "https://www.bilibili.com/video/BV1bd4y1F7Zo/",
+      "observed_context": "710.7万播放 / 38:17:44 / UP：浪漫小壁虎 / 2022-11-08",
+      "style_value": ["课堂讲解", "穴位操作", "生活比喻", "临场提醒"],
+      "sampling_priority": 1,
+      "local_status": "not_downloaded"
+    },
+    {
+      "id": "renji-acupuncture-case-001",
+      "category": "人纪",
+      "topic": "针灸真人案例",
+      "title": "倪师《针灸大成》真人案例演示合集",
+      "bvid": "BV1ckfwYFE43",
+      "url": "https://www.bilibili.com/video/BV1ckfwYFE43/",
+      "observed_context": "14.8万播放 / 03:25:58 / UP：经方十三叔 / 2025-04-02",
+      "style_value": ["操作演示", "即时判断", "案例式表达"],
+      "sampling_priority": 2,
+      "local_status": "not_downloaded"
+    },
+    {
+      "id": "renji-neijing-001",
+      "category": "人纪",
+      "topic": "黄帝内经",
+      "title": "倪海厦人纪-黄帝内经合集（字幕版）",
+      "bvid": "BV1BK411R7HN",
+      "url": "https://www.bilibili.com/video/BV1BK411R7HN/",
+      "observed_context": "63.6万播放 / 36:17:32 / UP：国风风起 / 2022-11-29",
+      "style_value": ["经典解释", "抽象概念落地", "养生与病机语言"],
+      "sampling_priority": 1,
+      "local_status": "not_downloaded"
+    },
+    {
+      "id": "renji-shanghan-001",
+      "category": "人纪",
+      "topic": "伤寒论",
+      "title": "倪海厦：《伤寒论》-高清带字幕无删减版",
+      "bvid": "BV1xQ4nzpEDo",
+      "url": "https://www.bilibili.com/video/BV1xQ4nzpEDo/",
+      "observed_context": "45.1万播放 / 29:19:18 / UP：人纪求真-中医 / 2025-10-11",
+      "style_value": ["方证辨析", "经方解释", "先辨再用"],
+      "sampling_priority": 1,
+      "local_status": "not_downloaded"
+    },
+    {
+      "id": "renji-jingui-001",
+      "category": "人纪",
+      "topic": "金匮要略",
+      "title": "倪海厦《金匮要略》高清带字幕无删减版",
+      "bvid": "BV1UD43zwE8a",
+      "url": "https://www.bilibili.com/video/BV1UD43zwE8a/",
+      "observed_context": "27.5万播放 / 38:00:11 / UP：人纪求真-中医 / 2025-10-12",
+      "style_value": ["杂病辨证", "方义展开", "禁忌边界"],
+      "sampling_priority": 1,
+      "local_status": "not_downloaded"
+    },
+    {
+      "id": "renji-clinic-001",
+      "category": "人纪",
+      "topic": "临床案例",
+      "title": "倪海厦 | 临床案例合集",
+      "bvid": "BV1B34y157BE",
+      "url": "https://www.bilibili.com/video/BV1B34y157BE/",
+      "observed_context": "19.8万播放 / 05:10:16 / UP：中立道生 / 2022-06-17",
+      "style_value": ["问诊节奏", "临床追问", "病例转辨证"],
+      "sampling_priority": 1,
+      "local_status": "not_downloaded"
+    },
+    {
+      "id": "renji-clinic-002",
+      "category": "人纪",
+      "topic": "问诊短讲",
+      "title": "倪师问诊—治病先治心",
+      "bvid": "BV1VM4y1m7u6",
+      "url": "https://www.bilibili.com/video/BV1VM4y1m7u6/",
+      "observed_context": "6.7万播放 / 28:35 / UP：倪海厦中医讲堂 / 2023-04-06",
+      "style_value": ["病人沟通", "安抚与判断", "短问短答"],
+      "sampling_priority": 2,
+      "local_status": "not_downloaded"
+    },
+    {
+      "id": "tianji-complete-001",
+      "category": "天纪",
+      "topic": "天纪总集",
+      "title": "倪海厦《天纪》逐字逐句手动校正＋配图版【完结】",
+      "bvid": "BV1KJsLekEfA",
+      "url": "https://www.bilibili.com/video/BV1KJsLekEfA/",
+      "observed_context": "258.2万播放 / 43:27:24 / UP：程心学 / 2024-08-26",
+      "style_value": ["术数总体系", "图像解释", "口语化拆象"],
+      "sampling_priority": 1,
+      "local_status": "not_downloaded"
+    },
+    {
+      "id": "tianji-yijing-001",
+      "category": "天纪",
+      "topic": "易经六十四卦",
+      "title": "倪海厦【天纪·易经64卦】逐字逐句手动校正+配图",
+      "bvid": "BV1q7BZYcEZP",
+      "url": "https://www.bilibili.com/video/BV1q7BZYcEZP/",
+      "observed_context": "97.4万播放 / 19:40:35 / UP：程心学 / 2024-11-28",
+      "style_value": ["先看象", "卦象推演", "不死断"],
+      "sampling_priority": 1,
+      "local_status": "not_downloaded"
+    },
+    {
+      "id": "tianji-yijing-002",
+      "category": "天纪",
+      "topic": "易经详解",
+      "title": "倪海厦《易经》详解 47集全",
+      "bvid": "BV12d4y1E7B6",
+      "url": "https://www.bilibili.com/video/BV12d4y1E7B6/",
+      "observed_context": "346.2万播放 / 23:28:17 / UP：国学宝库 / 2023-02-08",
+      "style_value": ["卦象讲课", "传统术语转口语", "案例类比"],
+      "sampling_priority": 2,
+      "local_status": "not_downloaded"
+    },
+    {
+      "id": "tianji-ziwei-001",
+      "category": "天纪",
+      "topic": "紫微斗数",
+      "title": "倪海厦《天纪·紫微斗数》逐字逐句手动校正字幕+配图",
+      "bvid": "BV1S7tieLE72",
+      "url": "https://www.bilibili.com/video/BV1S7tieLE72/",
+      "observed_context": "128.1万播放 / 13:16:25 / UP：程心学 / 2024-09-17",
+      "style_value": ["命盘解释", "星曜类象", "断语边界"],
+      "sampling_priority": 1,
+      "local_status": "not_downloaded"
+    },
+    {
+      "id": "tianji-four-pillars-001",
+      "category": "天纪",
+      "topic": "四柱命卦",
+      "title": "倪海厦《天纪·四柱命卦》逐字逐句+配图",
+      "bvid": "BV18bLkztE7R",
+      "url": "https://www.bilibili.com/video/BV18bLkztE7R/",
+      "observed_context": "16.1万播放 / 06:46:38 / UP：程心学 / 2025-04-28",
+      "style_value": ["命理推演", "规则解释", "课堂纠偏"],
+      "sampling_priority": 2,
+      "local_status": "not_downloaded"
+    },
+    {
+      "id": "diji-kanyu-001",
+      "category": "地纪",
+      "topic": "堪舆",
+      "title": "《天纪▪堪舆学》字幕完整版",
+      "bvid": "BV1rranzoE8v",
+      "url": "https://www.bilibili.com/video/BV1rranzoE8v/",
+      "observed_context": "2.1万播放 / 03:54:47 / UP：藏宝小阁 / 2025-09-01",
+      "style_value": ["空间类象", "堪舆术语", "方位说明"],
+      "sampling_priority": 2,
+      "local_status": "not_downloaded"
+    },
+    {
+      "id": "diji-yangzhai-001",
+      "category": "地纪",
+      "topic": "阳宅风水",
+      "title": "倪海厦：阳宅风水定位（全四讲）",
+      "bvid": "BV1bJ4m1N7RF",
+      "url": "https://www.bilibili.com/video/BV1bJ4m1N7RF/",
+      "observed_context": "19.1万播放 / 01:44:36 / UP：藏宝小阁 / 2024-05-14",
+      "style_value": ["住宅场景", "方位判断", "生活化解释"],
+      "sampling_priority": 1,
+      "local_status": "not_downloaded"
+    },
+    {
+      "id": "diji-yangzhai-002",
+      "category": "地纪",
+      "topic": "周易阳宅",
+      "title": "倪海厦《周易阳宅风水》合集",
+      "bvid": "BV1xM411c7nm",
+      "url": "https://www.bilibili.com/video/BV1xM411c7nm/",
+      "observed_context": "41.7万播放 / 02:46:42 / UP：国学宝库 / 2023-02-22",
+      "style_value": ["阳宅案例", "易理和空间结合", "家居类比"],
+      "sampling_priority": 1,
+      "local_status": "not_downloaded"
+    },
+    {
+      "id": "interview-liangdong-001",
+      "category": "访谈",
+      "topic": "梁冬对话",
+      "title": "梁冬对话倪海厦",
+      "bvid": "BV14V411y7AU",
+      "url": "https://www.bilibili.com/video/BV14V411y7AU/",
+      "observed_context": "20.5万播放 / 06:03:06 / UP：倪师国学堂 / 2020-10-27",
+      "style_value": ["长谈节奏", "世界观表达", "问答中的个性"],
+      "sampling_priority": 1,
+      "local_status": "not_downloaded"
+    },
+    {
+      "id": "interview-liangdong-002",
+      "category": "访谈",
+      "topic": "梁冬对话字幕版",
+      "title": "《梁冬对话倪海厦》字幕版全集",
+      "bvid": "BV1Bd4y1u7rH",
+      "url": "https://www.bilibili.com/video/BV1Bd4y1u7rH/",
+      "observed_context": "32.8万播放 / 05:55:12 / UP：国学中医传承 / 2022-09-15",
+      "style_value": ["访谈字幕", "自然对话", "非课堂语气"],
+      "sampling_priority": 1,
+      "local_status": "not_downloaded"
+    }
+  ],
+  "excluded_examples": [
+    {
+      "bvid": "BV17t4y1z7th",
+      "reason": "搜索结果为张至顺论医集，不属于倪师人物风格来源。"
+    },
+    {
+      "bvid": "BV1Yp421272r",
+      "reason": "搜索结果为通用四柱八字课程，不属于倪师本人来源。"
+    },
+    {
+      "bvid": "BV11nYXzsEi9",
+      "reason": "标题含未公开/内部资料，来源可靠性和授权边界不清，暂不纳入。"
+    }
+  ]
+}

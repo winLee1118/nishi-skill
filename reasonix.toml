@@ -1,0 +1,82 @@
+# Reasonix configuration.
+# Resolution order: flag > ./reasonix.toml > ~/.config/reasonix/config.toml > built-in defaults.
+# Secrets come from the environment via api_key_env; never put keys here.
+
+config_version = 2   # schema marker for diagnostics; old versions may ignore it
+default_model = "deepseek-flash"
+# language      = "zh"   # ui/model language; empty = auto-detect from $LANG / $REASONIX_LANG
+
+[agent]
+# system_prompt = """..."""   # omit to use the built-in prompt for this version
+# system_prompt_file = "prompts/system.md"   # overrides system_prompt when set
+max_steps         = 0   # executor tool-call rounds; 0 = no limit
+planner_max_steps = 12   # planner read-only tool-call rounds; 0 = no limit
+temperature       = 0.0
+auto_plan   = "off"   # off|on; off keeps plan mode manual
+# auto_plan_classifier = "deepseek-flash"   # optional; only used for borderline tasks
+soft_compact_ratio  = 0.5   # notice only; keeps cache-first prefix intact
+compact_ratio       = 0.8   # try compacting when prompt reaches this fraction
+compact_force_ratio = 0.9   # force compacting at this high-water mark
+# planner_model = "mimo"   # optional: enable two-model collaboration
+# subagent_model = "deepseek-pro"   # optional default for runAs=subagent skills
+# subagent_models = { review = "deepseek-pro", security_review = "deepseek-pro" }   # per-skill overrides
+# subagent_effort = "high"   # optional default effort for subagents
+# subagent_efforts = { review = "max", task = "high" }   # per-tool/skill effort overrides
+# output_style = "explanatory"   # explanatory | learning | concise | custom; empty = default
+
+[tools]
+enabled = []   # empty = all built-in tools
+bash_timeout_seconds = 120   # foreground safety cap; set 0 for no tool-local cap
+
+[codegraph]
+enabled      = true   # built-in MCP server; off by default for first-run sessions
+auto_install = true   # fetch the runtime when CodeGraph is enabled but missing
+path         = "C:\\Users\\cto90\\AppData\\Roaming\\npm\\codegraph.cmd"   # optional launcher override
+
+[lsp]
+enabled = true   # language server tools; servers launch lazily when used
+# [lsp.servers.go]
+# command = "gopls"
+# args = []
+# extensions = [".go"]
+
+[skills]
+# paths = ["~/my-skills", "../shared/skills"]   # extra custom skill roots
+# excluded_paths = ["~/.agents/skills"]   # hide convention roots without deleting folders
+# max_depth = 3   # nested scan depth; set 1 for legacy root-only discovery
+# disabled_skills = ["review"]   # hide noisy or unwanted skills
+
+[permissions]
+# Per-call gating. mode = writer fallback when no rule matches: ask|allow|deny.
+# Readers always default to allow. Precedence: deny > ask > allow > fallback.
+# Rules are "Tool" or "Tool(specifier)"; e.g. Bash(go test:*), Edit(src/**).
+mode  = "ask"
+# deny = ["Bash(rm -rf*)", "Bash(git push*)"]   # hard-blocked in every mode
+allow = ["Bash(which yt-dlp || which youtube-dl || which you-get || echo \"No video downloader found\")", "Bash(where.exe yt-dlp 2>$null; if (-not $?) { where.exe you-get 2>$null }; if (-not $?) { where.exe ffmpeg 2>$null })", "Bash(pip install:*)", "Bash($env:PATH = \"C:\\Users\\cto90\\AppData\\Roaming\\Python\\Python313\\Scripts;\" + $env:PATH; yt-dlp --version)", "Bash($env:PATH = \"C:\\Users\\cto90\\AppData\\Roaming\\Python\\Python313\\Scripts;\" + $env:PATH; New-Item -ItemType Directory -Force -Path \"samples/bilibili\"; yt-dlp --no-check-certificates -F \"https://www.bilibili.com/video/BV1VM4y1m7u6/\" 2>&1 | Select-Object -First 30)", "Bash($env:PATH = \"C:\\Users\\cto90\\AppData\\Roaming\\Python\\Python313\\Scripts;\" + $env:PATH; yt-dlp --cookies-from-browser chrome -F \"https://www.bilibili.com/video/BV1VM4y1m7u6/\" 2>&1 | Select-Object -First 30)", "Bash($env:PATH = \"C:\\Users\\cto90\\AppData\\Roaming\\Python\\Python313\\Scripts;\" + $env:PATH; yt-dlp --cookies-from-browser edge -F \"https://www.bilibili.com/video/BV1VM4y1m7u6/\" 2>&1 | Select-Object -First 30)", "Edit", "mcp__puppeteer__puppeteer_navigate", "Bash($cookiesPath = \"$env:LOCALAPPDATA\\Google\\Chrome\\User Data\\Default\\Network\\Cookies\"; Test-Path $cookiesPath; Write-Host \"Path: $cookiesPath\")", "Bash(python export_chrome_cookies.py:*)", "Bash(Start-Sleep -Seconds 3; python export_chrome_cookies.py)", "Bash(Get-Process chrome -ErrorAction SilentlyContinue | Select-Object Id, ProcessName)", "Bash(Write-Host \"等待 Chrome 关闭...\"; while (Get-Process chrome -ErrorAction SilentlyContinue) { Start-Sleep -Seconds 2 }; Write-Host \"Chrome 已关闭\"; python export_chrome_cookies.py)", "Bash(Get-Content cookies.txt:*)", "Bash(python debug_cookies.py:*)", "Bash(python debug_cookies.py 2>&1 | Select-Object -Last 50)", "Bash(python export_cookies_v2.py:*)", "Bash(python download_bilibili_api.py 2>&1 | Select-Object -First 50)", "Bash(python debug_api.py:*)", "Bash(python download_bilibili_api.py 2>&1 | Select-Object -First 80)", "Bash(python download_bilibili_api.py 2>&1 | Select-Object -First 100 -Last 30)", "Bash(Get-ChildItem -Path \"samples/bilibili\" -Recurse | Select-Object FullName, Length, LastWriteTime)", "Bash($probe = & \"D:\\cto9012\\ffmpeg\\bin\\ffprobe.exe\" -v quiet -print_format json -show_format -show_streams \"samples/bilibili/人纪/倪海厦【人纪】视频讲座完整版（针灸、黄帝内经、神农本草经、伤寒杂病论、金匮要略）.mp4\" 2>&1; $probe | ConvertFrom-Json | Select-Object -ExpandProperty format | Select-Object duration, size, bit_rate)", "Bash(python download_bilibili_cookie.py 2>&1 | Select-Object -First 60)", "Bash(Start-Process python:*)", "Bash(python download_bilibili_cookie.py > download_log.txt 2>&1 &)", "Bash(Start-Job -ScriptBlock:*)", "Bash(Start-Sleep -Seconds 10; Get-Job -Name \"bilibili-download\" | Receive-Job)", "Bash(Get-Job | Select-Object Id, Name, State)", "Bash(if (Test-Path:*)", "Bash(Get-ChildItem -Path \"samples/bilibili\" -Recurse -File | Select-Object FullName, @{N=\"SizeMB\";E={[math]::Round($_.Length/1MB, 2)}}, LastWriteTime | Sort-Object LastWriteTime -Descending | Select-Object -First 10)", "Bash(Start-Sleep -Seconds 30; Get-Content \"download_log.txt\" -Tail 10; Write-Host \"`n--- 已下载文件 ---\"; Get-ChildItem -Path \"samples/bilibili\" -Recurse -File | Select-Object @{N=\"SizeMB\";E={[math]::Round($_.Length/1MB, 2)}}, Name | Format-Table)", "run_skill"]
+# ask = ["Edit(src/**)"]   # force a prompt even if otherwise allowed
+
+[sandbox]
+# Confine tool blast radius. File-writers (write_file/edit_file/multi_edit)
+# may only write under workspace_root (empty = current dir) + allow_write.
+# bash = "enforce" (default) jails each command in an OS sandbox (macOS now;
+# graceful fallback elsewhere); "off" disables it. network allows egress.
+# workspace_root = ""            # default: current working directory
+# allow_write = ["/tmp"]          # extra dirs writers may also modify
+bash    = "enforce"
+network = true
+
+[statusline]
+# A custom status line: a command whose first stdout line replaces the built-in
+# data row. It receives {"model","contextUsed","contextWindow","cwd"} as JSON on stdin.
+# command = "my-statusline.sh"
+
+# External MCP servers. type: "stdio" (default, a subprocess) | "http" | "sse".
+# ${VAR} / ${VAR:-default} are expanded from the environment in command/args/env/url/headers.
+# [[plugins]]
+# name    = "example"
+# command = "reasonix-plugin-example"
+# [[plugins]]                                  # a remote server over Streamable HTTP
+# name    = "stripe"
+# type    = "http"
+# url     = "https://mcp.stripe.com"
+# headers = { Authorization = "Bearer ${STRIPE_KEY}" }

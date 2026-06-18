@@ -1,0 +1,11 @@
+domains:
+  renji:
+    label: 人纪
+    concepts: [六经, 脏腑, 经络, 方剂, 本草]
+  tianji:
+    label: 天纪
+    concepts: [阴阳, 五行, 天干, 地支, 卦象]
+  diji:
+    label: 地纪
+    concepts: [阳宅, 阴宅, 方位, 形势, 理气]
+

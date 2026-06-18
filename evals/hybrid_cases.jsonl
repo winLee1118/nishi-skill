@@ -1,0 +1,5 @@
+{"id":"hybrid-renji-001","question":"为什么不能只看到有汗怕风就机械地用桂枝汤，要先判断太阳中风和表里寒热？","domain":"renji","top_k":5,"must_find":["桂枝汤","太阳"],"must_avoid":["紫微斗数"]}
+{"id":"hybrid-renji-002","question":"病人表证还在的时候，如果医生过早攻下，会产生什么样的误治后果？","domain":"renji","top_k":5,"must_find":["表","攻下"],"must_avoid":["阳宅"]}
+{"id":"hybrid-tianji-001","question":"天纪里用天干地支和五行推演时，重点是看结构关系还是直接断吉凶？","domain":"tianji","top_k":5,"must_find":["天干","五行"],"must_avoid":["桂枝汤"]}
+{"id":"hybrid-diji-001","question":"地纪看房子方位时，为什么要把空间、动线和居住者的状态合在一起判断？","domain":"diji","top_k":5,"must_find":["方位"],"must_avoid":["伤寒论"]}
+{"id":"hybrid-cross-001","question":"如果把人纪的辨证思路和天纪地纪的结构分析放在一起，它们共同强调什么？","domain":"cross","top_k":5,"must_find":["人纪"],"must_avoid":[]}
